@@ -1,0 +1,296 @@
+/* client/src/styles/Prediction.css */
+
+/* Night Mode Theme Variables (aligned with Home.css) */
+:root[data-theme="night"] {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #1c2526;
+    --border-color: #374151;
+    --card-background: rgba(255, 255, 255, 0.08);
+    --highlight-color: #00ddeb;
+    --secondary-highlight: #4b6cb7;
+    --input-bg: rgba(255, 255, 255, 0.08);
+    --button-bg: #00ddeb;
+    --button-text: #000000;
+    --button-hover-glow: 0 0 12px rgba(0, 221, 235, 0.6);
+    --error-color: #f87171;
+    --chart-historical: #34d399; /* Softer green for historical data */
+    --chart-predicted: #f472b6; /* Soft pink for predicted data */
+}
+
+/* Day Mode Theme Variables (aligned with Home.css) */
+:root[data-theme="day"] {
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+    --accent-color: #f3f4f6;
+    --border-color: #d1d5db;
+    --card-background: rgba(0, 0, 0, 0.05);
+    --highlight-color: #1d4ed8;
+    --secondary-highlight: #6b7280;
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --button-bg: #1d4ed8;
+    --button-text: #ffffff;
+    --button-hover-glow: 0 0 12px rgba(0, 141, 235, 0.6);
+    --error-color: #dc2626;
+    --chart-historical: #16a34a; /* Deeper green for historical data */
+    --chart-predicted: #db2777; /* Deeper pink for predicted data */
+}
+
+/* Prediction Container */
+.prediction-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Section */
+.prediction-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.prediction-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.prediction-description {
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Prediction Form */
+.prediction-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 8px rgba(0, 221, 235, 0.3);
+}
+
+.input-field::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.submit-button {
+    padding: 12px 30px;
+    border-radius: 12px;
+    border: none;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+    box-shadow: var(--button-hover-glow);
+    transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+    background: var(--secondary-highlight);
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--button-text);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-text {
+    color: var(--error-color);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Prediction Result */
+.prediction-result {
+    background: var(--accent-color);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Prediction Metadata */
+.prediction-metadata {
+    text-align: center;
+}
+
+.metadata-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--highlight-color);
+    margin-bottom: 15px;
+}
+
+.metadata-item {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.metadata-item span {
+    font-weight: 700;
+    color: var(--highlight-color);
+    margin-right: 5px;
+}
+
+.metadata-note {
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .prediction-container {
+        padding: 30px 15px;
+    }
+
+    .prediction-title {
+        font-size: 30px;
+    }
+
+    .prediction-description {
+        font-size: 14px;
+    }
+
+    .prediction-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-group {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .submit-button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+
+    .prediction-result {
+        padding: 20px;
+    }
+
+    .metadata-title {
+        font-size: 18px;
+    }
+
+    .metadata-item {
+        font-size: 12px;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .prediction-container {
+        padding: 20px 10px;
+    }
+
+    .prediction-title {
+        font-size: 24px;
+    }
+
+    .prediction-description {
+        font-size: 12px;
+    }
+
+    .input-field {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .submit-button {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    .error-text {
+        font-size: 12px;
+    }
+
+    .prediction-result {
+        padding: 15px;
+    }
+
+    .chart-container {
+        padding: 15px;
+    }
+
+    .metadata-title {
+        font-size: 16px;
+    }
+
+    .metadata-item {
+        font-size: 10px;
+    }
+
+    .metadata-note {
+        font-size: 10px;
+    }
+}

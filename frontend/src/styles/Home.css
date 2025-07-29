@@ -1,0 +1,795 @@
+/* client/src/styles/Home.css */
+
+/* Default (Night Mode) Theme Variables */
+:root[data-theme="night"] {
+    --background-color: #000000; /* Black background for night mode */
+    --text-color: #ffffff; /* White text for night mode */
+    --accent-color: #1c2526; /* Dark slate for sections */
+    --border-color: #374151; /* Gray border for night mode */
+    --hover-glow: 0 0 12px rgba(0, 221, 235, 0.6); /* Enhanced cyan glow */
+    --blur-background: rgba(255, 255, 255, 0.08); /* Subtle glass effect */
+    --gradient-background: linear-gradient(135deg, #0d1a26 0%, #1c2526 100%); /* Refined gradient */
+    --card-background: rgba(255, 255, 255, 0.08); /* Glassmorphism for cards */
+    --highlight-color: #00ddeb; /* Vibrant cyan for links and accents */
+    --secondary-highlight: #4b6cb7; /* Muted blue for secondary elements */
+    --positive-color: #34d399; /* Softer green for positive changes */
+    --negative-color: #f87171; /* Softer red for negative changes */
+}
+
+/* Day Mode Theme Variables */
+:root[data-theme="day"] {
+    --background-color: #ffffff; /* White background for day mode */
+    --text-color: #1f2937; /* Dark gray text for day mode */
+    --accent-color: #f3f4f6; /* Light gray for sections */
+    --border-color: #d1d5db; /* Light gray border for day mode */
+    --hover-glow: 0 0 12px rgba(0, 141, 235, 0.6); /* Enhanced blue glow */
+    --blur-background: rgba(0, 0, 0, 0.05); /* Subtle glass effect */
+    --gradient-background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%); /* Clean gradient */
+    --card-background: rgba(0, 0, 0, 0.05); /* Glassmorphism for cards */
+    --highlight-color: #1d4ed8; /* Deep blue for links and accents */
+    --secondary-highlight: #6b7280; /* Gray for secondary elements */
+    --positive-color: #16a34a; /* Deeper green for positive changes */
+    --negative-color: #dc2626; /* Deeper red for negative changes */
+}
+
+/* Home Container */
+.home-container {
+    min-height: 100vh;
+    background: var(--gradient-background);
+    padding-top: 60px;
+    overflow-x: hidden;
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3') no-repeat center center/cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 26, 38, 0.7);
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--text-color), var(--highlight-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    padding: 12px 30px;
+    border-radius: 25px;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-3px);
+}
+
+.theme-toggle-button {
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-3px);
+}
+
+/* Live Stock Ticker Section */
+.ticker-section {
+    background: var(--accent-color);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-wrapper {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+}
+
+.ticker {
+    display: inline-flex;
+    gap: 30px;
+}
+
+.ticker-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ticker-symbol {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--highlight-color);
+}
+
+.ticker-price {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ticker-change {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ticker-change.positive {
+    color: var(--positive-color);
+}
+
+.ticker-change.negative {
+    color: var(--negative-color);
+}
+
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Market Overview Section */
+.market-overview-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.market-overview-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.market-overview {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.market-card {
+    background: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    flex: 1 1 200px;
+    max-width: 250px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.market-card:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-5px);
+}
+
+.market-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.market-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.market-change {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.market-change.positive {
+    color: var(--positive-color);
+}
+
+.market-change.negative {
+    color: var(--negative-color);
+}
+
+/* News Section */
+.news-section {
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.news-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.loading-news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--highlight-color);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.news-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--accent-color);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.news-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s ease;
+}
+
+.news-item:hover {
+    background: var(--blur-background);
+}
+
+.news-title {
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.news-meta {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary-highlight);
+    margin: 0 20px;
+}
+
+.news-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+    color: var(--secondary-highlight);
+}
+
+.live-news-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.live-news-card {
+    background: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.live-news-card:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-3px);
+}
+
+.live-news-card p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* StockAnalysis.com Preview Section */
+.stock-analysis-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.stock-analysis-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.stock-analysis-preview {
+    background: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.stock-analysis-preview:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-5px);
+}
+
+.stock-analysis-preview p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.stock-analysis-preview a {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+.stock-analysis-preview a:hover {
+    text-decoration: underline;
+    color: var(--secondary-highlight);
+}
+
+.stock-analysis-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.stock-analysis-content p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.analysis-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.analysis-link:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-3px);
+}
+
+/* Trending Stocks Section */
+.trending-stocks-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.trending-stocks-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.trending-stocks {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.trending-card {
+    background: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    flex: 1 1 200px;
+    max-width: 250px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.trending-card:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-5px);
+}
+
+.trending-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.trending-card p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.trending-change {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.trending-change.positive {
+    color: var(--positive-color);
+}
+
+.trending-change.negative {
+    color: var(--negative-color);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--accent-color);
+}
+
+.newsletter-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.newsletter-section p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.newsletter-input {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid var(--border-color);
+    background: var(--blur-background);
+    color: var(--text-color);
+    font-size: 16px;
+    width: 300px;
+    max-width: 100%;
+}
+
+.newsletter-input::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.newsletter-button {
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+    box-shadow: var(--hover-glow);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-button, .theme-toggle-button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+
+    .ticker-item {
+        gap: 8px;
+    }
+
+    .ticker-symbol,
+    .ticker-price {
+        font-size: 14px;
+    }
+
+    .ticker-change {
+        font-size: 12px;
+    }
+
+    .market-overview-section h2,
+    .news-section h2,
+    .stock-analysis-section h2,
+    .trending-stocks-section h2,
+    .newsletter-section h2 {
+        font-size: 28px;
+    }
+
+    .market-card {
+        flex: 1 1 150px;
+        max-width: 200px;
+        padding: 15px;
+    }
+
+    .market-label {
+        font-size: 14px;
+    }
+
+    .market-value {
+        font-size: 20px;
+    }
+
+    .market-change {
+        font-size: 12px;
+    }
+
+    .news-list {
+        padding: 15px;
+    }
+
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 10px 0;
+    }
+
+    .news-title {
+        font-size: 14px;
+    }
+
+    .news-meta {
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .news-link {
+        font-size: 12px;
+    }
+
+    .live-news-card {
+        max-width: 250px;
+        padding: 15px;
+    }
+
+    .live-news-card p {
+        font-size: 14px;
+    }
+
+    .stock-analysis-preview {
+        padding: 20px;
+    }
+
+    .trending-card {
+        flex: 1 1 150px;
+        max-width: 200px;
+        padding: 15px;
+    }
+
+    .newsletter-input {
+        width: 250px;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-button, .theme-toggle-button {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    .ticker-symbol,
+    .ticker-price {
+        font-size: 12px;
+    }
+
+    .ticker-change {
+        font-size: 10px;
+    }
+
+    .market-overview-section h2,
+    .news-section h2,
+    .stock-analysis-section h2,
+    .trending-stocks-section h2,
+    .newsletter-section h2 {
+        font-size: 24px;
+    }
+
+    .market-card {
+        flex: 1 1 120px;
+        max-width: 150px;
+        padding: 10px;
+    }
+
+    .market-label {
+        font-size: 12px;
+    }
+
+    .market-value {
+        font-size: 18px;
+    }
+
+    .market-change {
+        font-size: 10px;
+    }
+
+    .news-list {
+        padding: 10px;
+    }
+
+    .news-title {
+        font-size: 12px;
+    }
+
+    .news-meta {
+        font-size: 8px;
+    }
+
+    .news-link {
+        font-size: 10px;
+    }
+
+    .live-news-card {
+        max-width: 200px;
+        padding: 10px;
+    }
+
+    .live-news-card p {
+        font-size: 12px;
+    }
+
+    .stock-analysis-preview {
+        padding: 15px;
+    }
+
+    .stock-analysis-content h3 {
+        font-size: 18px;
+    }
+
+    .stock-analysis-content p {
+        font-size: 14px;
+    }
+
+    .trending-card {
+        flex: 1 1 120px;
+        max-width: 150px;
+        padding: 10px;
+    }
+
+    .trending-card h3 {
+        font-size: 18px;
+    }
+
+    .newsletter-input {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    .newsletter-button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}

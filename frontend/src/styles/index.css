@@ -1,0 +1,139 @@
+/* client/src/index.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrollbar globally */
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Night Mode Theme Variables */
+:root[data-theme="night"] {
+    /* General Colors */
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #1c2526;
+    --border-color: #374151;
+    --card-background: rgba(255, 255, 255, 0.08);
+    --highlight-color: #00ddeb;
+    --secondary-highlight: #4b6cb7;
+    --error-color: #f87171;
+
+    /* Navbar Colors */
+    --navbar-bg-start: #0d1a26;
+    --navbar-bg-end: #1c2526;
+    --navbar-text: #ffffff;
+    --navbar-link: #ffffff;
+    --navbar-link-hover-bg: #374151;
+    --navbar-link-hover-text: #00ddeb;
+    --navbar-link-active-bg: #00ddeb;
+    --navbar-link-active-text: #000000;
+    --navbar-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --navbar-border: #374151;
+    --logout-bg: #f87171;
+    --logout-hover-bg: #f472b6;
+    --theme-button-bg: #00ddeb;
+    --theme-button-text: #000000;
+    --theme-button-hover-glow: 0 0 12px rgba(0, 221, 235, 0.6);
+    --hamburger-bg: #ffffff;
+
+    /* Footer Colors */
+    --footer-background: #1c2526;
+    --footer-text: #ffffff;
+    --footer-link: #00ddeb;
+    --footer-link-hover: #4b6cb7;
+    --footer-border: #374151;
+    --footer-input-bg: rgba(255, 255, 255, 0.08);
+    --footer-button-bg: #00ddeb;
+    --footer-button-text: #000000;
+    --footer-button-hover-glow: 0 0 12px rgba(0, 221, 235, 0.6);
+
+    /* Home Colors */
+    --gradient-background: linear-gradient(135deg, #0d1a26, #1c2526);
+    --hero-overlay: rgba(0, 0, 0, 0.7);
+    --button-bg: #00ddeb;
+    --button-text: #000000;
+    --button-hover-glow: 0 0 12px rgba(0, 221, 235, 0.6);
+
+    /* Prediction Colors */
+    --input-bg: rgba(255, 255, 255, 0.08);
+    --chart-historical: #34d399;
+    --chart-predicted: #f472b6;
+}
+
+/* Day Mode Theme Variables */
+:root[data-theme="day"] {
+    /* General Colors */
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+    --accent-color: #f3f4f6;
+    --border-color: #d1d5db;
+    --card-background: rgba(0, 0, 0, 0.05);
+    --highlight-color: #1d4ed8;
+    --secondary-highlight: #6b7280;
+    --error-color: #dc2626;
+
+    /* Navbar Colors */
+    --navbar-bg-start: #e5e7eb;
+    --navbar-bg-end: #f3f4f6;
+    --navbar-text: #1f2937;
+    --navbar-link: #1f2937;
+    --navbar-link-hover-bg: #d1d5db;
+    --navbar-link-hover-text: #1d4ed8;
+    --navbar-link-active-bg: #1d4ed8;
+    --navbar-link-active-text: #ffffff;
+    --navbar-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --navbar-border: #d1d5db;
+    --logout-bg: #dc2626;
+    --logout-hover-bg: #db2777;
+    --theme-button-bg: #1d4ed8;
+    --theme-button-text: #ffffff;
+    --theme-button-hover-glow: 0 0 12px rgba(0, 141, 235, 0.6);
+    --hamburger-bg: #1f2937;
+
+    /* Footer Colors */
+    --footer-background: #f3f4f6;
+    --footer-text: #1f2937;
+    --footer-link: #1d4ed8;
+    --footer-link-hover: #6b7280;
+    --footer-border: #d1d5db;
+    --footer-input-bg: rgba(0, 0, 0, 0.05);
+    --footer-button-bg: #1d4ed8;
+    --footer-button-text: #ffffff;
+    --footer-button-hover-glow: 0 0 12px rgba(0, 141, 235, 0.6);
+
+    /* Home Colors */
+    --gradient-background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+    --hero-overlay: rgba(255, 255, 255, 0.7);
+    --button-bg: #1d4ed8;
+    --button-text: #ffffff;
+    --button-hover-glow: 0 0 12px rgba(0, 141, 235, 0.6);
+
+    /* Prediction Colors */
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --chart-historical: #16a34a;
+    --chart-predicted: #db2777;
+}
+
+/* Apply background to the body */
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Ensure links inherit text color by default */
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-highlight);
+}
